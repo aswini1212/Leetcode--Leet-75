@@ -1,0 +1,30 @@
+import java.util.*;
+class Solution {
+    public String reverseWords(String s) {
+         Scanner in = new Scanner(System.in);
+        
+        int l, i, k = 0;
+        s=s.trim();
+       
+        String a[] = s.split("\\s+");
+        l = a.length;
+        String str[] = new String[l];
+        
+      
+        for (i = l - 1; i >= 0; i--) {
+            str[k] = a[i];
+            k++;
+        }
+        
+       StringBuilder newString = new StringBuilder();
+        for (i = 0; i < l; i++) {
+            newString.append(str[i]);
+            if (i < l - 1) {
+                newString.append(" ");
+            }
+        }
+        
+        return newString.toString();
+        
+    }
+}

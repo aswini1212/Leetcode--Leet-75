@@ -1,0 +1,45 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode* deleteMiddle(struct ListNode* head) {
+    struct ListNode *current, *prev;
+    int count = 0, i;
+    current = head;
+
+    // Count the number of nodes in the list
+    while (current != NULL) {
+        count++;
+        current = current->next;
+    }
+
+    int index = count / 2;
+    current = head;
+
+    // If the list is empty or has only one element, return NULL
+    if (head == NULL || head->next == NULL) {
+        return NULL;
+    }
+
+    // If the middle node is the first node, delete it and update head
+    if (index == 0) {
+        head = head->next;
+        free(current);
+    } else {
+        prev = current;
+        current = current->next;
+        for (i = 1; i <=index; i++) {
+            if (i == index) {
+                prev->next = current->next;
+                free(current);
+            } else {
+                prev = current;
+                current = current->next;
+            }
+        }
+    }
+    return head;
+}

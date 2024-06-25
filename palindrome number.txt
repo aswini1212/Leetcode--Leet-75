@@ -1,0 +1,20 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+bool isPalindrome(int x) {
+    if (x < 0) // Negative numbers can't be palindromes
+        return false;
+
+    long int digit, rev = 0, num = x;
+    while (x != 0) {
+        digit = x % 10;
+        rev = rev * 10 + digit;
+        x = x / 10;
+    }
+
+    if (rev != num) // Check if the reversed number is equal to the original number
+        return false;
+    else
+        return true;
+}

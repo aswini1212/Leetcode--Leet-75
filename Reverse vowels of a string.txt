@@ -1,0 +1,29 @@
+char* reverseVowels(char* s) {
+    int l=strlen(s);
+    char str1[l];
+    int a[l];
+    //printf("Enetr the string:");
+    //scanf("%[^\n]",s);
+    
+    int i,j=0,k=0;
+    for(i=0;i<l;i++)
+    {
+        if(s[i]=='a'||s[i]=='e'||s[i]=='i'||s[i]=='o'||s[i]=='u'||s[i]=='A'||s[i]=='E'||s[i]=='I'||s[i]=='O'||s[i]=='U')
+        {
+            str1[j]=s[i];
+            a[k]=i;
+            j++;
+            k++;
+        }
+    }
+    j=0;
+    for(i=k-1;i>=0;i--)
+    {
+        //printf("hii");
+        s[a[j]]=str1[i];
+        j++;
+    }
+    
+    return s;
+    
+}

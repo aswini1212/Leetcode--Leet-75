@@ -1,0 +1,35 @@
+struct ListNode* reverseList(struct ListNode* head) {
+    if (head == NULL) {
+        return NULL; // If the input list is empty, return NULL
+    }
+
+    struct ListNode *current, *newnode, *head1 = NULL, *tail = NULL;
+    int count = 0;
+    
+    current = head;
+    while(current != NULL) {
+        count++;
+        current = current->next;
+    }
+    
+    int a[count];
+    current = head;
+    for(int i = 0; i < count; i++) {
+        a[i] = current->val;
+        current = current->next;
+    }
+    
+    for(int i = count - 1; i >= 0; i--) {
+        newnode = (struct ListNode*)malloc(sizeof(struct ListNode));
+        newnode->val = a[i];
+        newnode->next = NULL;
+        if(head1 == NULL) {
+            head1 = newnode;
+            tail = newnode;
+        } else {
+            tail->next = newnode;
+            tail = newnode;
+        }
+    }
+    return head1;
+}

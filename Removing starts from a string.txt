@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <string.h>
+
+int top = -1;
+char stack[1000002];
+
+void push(char ch) {
+    if (top == 1000001) {
+        printf("Stack is full\n");
+    } else {
+        top++;
+        stack[top] = ch;
+    }
+}
+
+char pop() {
+    char item = '\0'; // Initialize to null character
+    if (top == -1) {
+        printf("Stack is empty\n");
+    } else {
+        item = stack[top];
+        top--;
+    }
+    return item;
+}
+
+char* removeStars(char* s) {
+    int l = strlen(s);
+
+    // Reset top
+    top = -1;
+
+    // Iterate through the string
+    for (int i = 0; i < l; i++) {
+        if (s[i] == '*') {
+            pop(); // Remove the closest non-star character to the left
+        } else {
+            push(s[i]);
+        }
+    }
+
+    // Null-terminate the string
+    stack[top + 1] = '\0';
+
+    // Return the modified string
+    return stack;
+}

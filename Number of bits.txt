@@ -1,0 +1,47 @@
+struct node
+{
+    int data;
+    struct node*next;
+   
+};
+struct node*current,*newnode,*head,*tail;
+int hammingWeight(int n) {
+    head=NULL;
+    tail=NULL;
+    int item;
+    //printf("Enetr the number:");
+    //scanf("%d",&num);
+    while(n>0)
+    {
+       item=n%2;
+       newnode=(struct node*)malloc(sizeof(struct node));
+       newnode->data=item;
+       newnode->next=NULL;
+       
+       if(head==NULL)
+       {
+           head=newnode;
+           tail=newnode;
+       }
+       else
+       {
+           tail->next=newnode;
+           tail=newnode;
+       }
+       n=n/2;
+       
+    }
+    current=head;
+    int count=0;
+    while(current!=NULL)
+    {
+        if(current->data==1)
+        {
+            count++;
+        }
+        current=current->next;
+    }
+    return count;
+
+    
+}

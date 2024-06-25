@@ -1,0 +1,26 @@
+#include<string.h>
+#include<stdio.h>
+#include<stdlib.h>
+char * mergeAlternately(char * word1, char * word2){
+    int l1 = strlen(word1);
+    int l2 = strlen(word2);
+    
+    // Allocate memory for the result string
+    char *result = (char *)malloc((l1 + l2 + 1) * sizeof(char)); // +1 for the null terminator
+    
+    int i = 0, j = 0, k = 0;
+    while (i < l1 && j < l2) {
+        result[k++] = word1[i++];
+        result[k++] = word2[j++];
+    }
+    while (i < l1) {
+        result[k++] = word1[i++];
+    }
+    while (j < l2) {
+        result[k++] = word2[j++];
+    }
+    result[k] = '\0'; // Null-terminate the result string
+    
+    return result;
+
+}

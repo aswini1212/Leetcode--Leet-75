@@ -1,0 +1,15 @@
+int reverse(int x) {
+    long int digit, rev = 0;
+    while (x != 0) {
+        digit = x % 10;
+        rev = rev * 10 + digit;
+        x = x / 10;
+    }
+
+    // Check if the reversed number exceeds the range of a 32-bit signed integer
+    if (rev < INT_MIN || rev > INT_MAX) {
+        return 0;
+    }
+
+    return (int)rev;
+}
