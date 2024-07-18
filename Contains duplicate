@@ -1,0 +1,28 @@
+class Solution {
+    public boolean hasDuplicate(int[] nums) {
+        
+        int i,num,j,flag=0;
+        int length=nums.length;
+        for(i=0;i<length;i++)
+        {
+            num=nums[i];
+            for(j=i+1;j<length;j++)
+            {
+                if(nums[j]==num)
+                {
+                    flag=1;
+                    break;
+                }
+            }
+            
+        }
+        if(flag==1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+}
